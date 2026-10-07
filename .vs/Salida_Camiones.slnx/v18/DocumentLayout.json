@@ -1,0 +1,154 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|c:\\users\\alumnos\\downloads\\salida_camiones_burgos_garces_zapata\\salida_camiones\\salida_camiones\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|solutionrelative:salida_camiones\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|c:\\users\\alumnos\\downloads\\salida_camiones_burgos_garces_zapata\\salida_camiones\\salida_camiones\\models\\estadosalida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|solutionrelative:salida_camiones\\models\\estadosalida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|c:\\users\\alumnos\\downloads\\salida_camiones_burgos_garces_zapata\\salida_camiones\\salida_camiones\\models\\estado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|solutionrelative:salida_camiones\\models\\estado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|c:\\users\\alumnos\\downloads\\salida_camiones_burgos_garces_zapata\\salida_camiones\\salida_camiones\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|solutionrelative:salida_camiones\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|c:\\users\\alumnos\\downloads\\salida_camiones_burgos_garces_zapata\\salida_camiones\\salida_camiones\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|solutionrelative:salida_camiones\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|c:\\users\\alumnos\\downloads\\salida_camiones_burgos_garces_zapata\\salida_camiones\\salida_camiones\\views\\home\\camion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|solutionrelative:salida_camiones\\views\\home\\camion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|c:\\users\\alumnos\\downloads\\salida_camiones_burgos_garces_zapata\\salida_camiones\\salida_camiones\\views\\home\\chofer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|solutionrelative:salida_camiones\\views\\home\\chofer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|c:\\users\\alumnos\\downloads\\salida_camiones_burgos_garces_zapata\\salida_camiones\\salida_camiones\\models\\evaluacioncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BC14244-F317-A81E-241D-95723DE610F6}|Salida_Camiones\\Salida_Camiones.csproj|solutionrelative:salida_camiones\\models\\evaluacioncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EstadoSalida.cs",
+              "DocumentMoniker": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Models\\EstadoSalida.cs",
+              "RelativeDocumentMoniker": "Salida_Camiones\\Models\\EstadoSalida.cs",
+              "ToolTip": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Models\\EstadoSalida.cs",
+              "RelativeToolTip": "Salida_Camiones\\Models\\EstadoSalida.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T22:14:36.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Estado.cs",
+              "DocumentMoniker": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Models\\Estado.cs",
+              "RelativeDocumentMoniker": "Salida_Camiones\\Models\\Estado.cs",
+              "ToolTip": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Models\\Estado.cs",
+              "RelativeToolTip": "Salida_Camiones\\Models\\Estado.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T22:14:31.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Salida_Camiones\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Salida_Camiones\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T22:14:30.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Salida_Camiones\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Salida_Camiones\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAP8AAAAAAAAAAAAiwBwCAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T22:12:38.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Salida_Camiones\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Salida_Camiones\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowAwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T22:12:09.364Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Chofer.cshtml",
+              "DocumentMoniker": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Views\\Home\\Chofer.cshtml",
+              "RelativeDocumentMoniker": "Salida_Camiones\\Views\\Home\\Chofer.cshtml",
+              "ToolTip": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Views\\Home\\Chofer.cshtml",
+              "RelativeToolTip": "Salida_Camiones\\Views\\Home\\Chofer.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB4AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-15T23:40:19.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Camion.cshtml",
+              "DocumentMoniker": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Views\\Home\\Camion.cshtml",
+              "RelativeDocumentMoniker": "Salida_Camiones\\Views\\Home\\Camion.cshtml",
+              "ToolTip": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Views\\Home\\Camion.cshtml",
+              "RelativeToolTip": "Salida_Camiones\\Views\\Home\\Camion.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-15T23:40:01.498Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EvaluacionContext.cs",
+              "DocumentMoniker": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Models\\EvaluacionContext.cs",
+              "RelativeDocumentMoniker": "Salida_Camiones\\Models\\EvaluacionContext.cs",
+              "ToolTip": "C:\\Users\\Alumnos\\Downloads\\Salida_Camiones_Burgos_Garces_Zapata\\Salida_Camiones\\Salida_Camiones\\Models\\EvaluacionContext.cs",
+              "RelativeToolTip": "Salida_Camiones\\Models\\EvaluacionContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-15T23:21:07.669Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+@{
+    ViewData["Title"] = "Salida";
+}
+
+<h2>Ingreso nueva Salida</h2>
+<table>
+    <tr>
+        <td>Fecha de salida</td>
+        <td><input type="date" id="txtFechaSalida" /></td>
+    </tr>
+    <tr>
+        <td>Planta</td>
+        <td>
+            <select id="cmbPlanta" onchange="cargaCamiones()"></select>
+        </td>
+    </tr>
+    <tr>
+        <td>Camion</td>
+        <td>
+            <select id="cmbCamion"></select>
+        </td>
+    </tr>
+    <tr>
+        <td>Chofer</td>
+        <td>
+            <select id="cmbChofer"></select>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="hidden" id="txtUsuario" value="@Context.Session.GetString("Cod_Usuario")" />
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button type="button" onclick="ingresar()" id="btnGuardar">Guardar Salida</button>
+        </td>
+    </tr>
+</table>
+<br />
+<table border="1">
+    <thead>
+        <tr style="background-color:red;color:white;">
+            <th>ID SALIDA</th>
+            <th>FECHA SALIDA</th>
+            <th>PLANTA</th>
+            <th>CAMION</th>
+            <th>CHOFER</th>
+            <th>ESTADO SALIDA</th>
+            <th>USUARIO</th>
+            <th>RETORNAR</th>
+            <th>RECHAZAR</th>
+        </tr>
+    </thead>
+    <tbody id="tbDatosSalida"></tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        cargaPlantas();
+        cargaChoferes();
+        cargaTabla();
+    });
+
+    function cargaPlantas() {
+        $.ajax({
+            url: "/Home/ObtenerPlantas",
+            method: "GET",
+            success: function (response) {
+                $("#cmbPlanta").empty();
+                $.each(response, function (i, item) {
+                    $("#cmbPlanta").append(
+                        "<option value='" + item.id_Planta + "'>" + item.nom_Planta + "</option>"
+                    );
+                });
+                cargaCamiones();
+            }
+        });
+    }
+
+    function cargaCamiones() {
+        var idPlanta = $("#cmbPlanta").val();
+
+        $.ajax({
+            url: "/Home/ObtenerCamionesPorPlanta",
+            method: "GET",
+            data: { idPlanta: idPlanta },
+            success: function (response) {
+                $("#cmbCamion").empty();
+                $.each(response, function (i, item) {
+                    $("#cmbCamion").append(
+                        "<option value='" + item.cod_camion + "'>" + item.cod_camion + "</option>"
+                    );
+                });
+            }
+        });
+    }
+
+    function cargaChoferes() {
+        $.ajax({
+            url: "/Home/ObtenerChoferesHabilitados",
+            method: "GET",
+            success: function (response) {
+                $("#cmbChofer").empty();
+                $.each(response, function (i, item) {
+                    $("#cmbChofer").append(
+                        "<option value='" + item.id_chofer + "'>" + item.nom_chofer + "</option>"
+                    );
+                });
+            }
+        });
+    }
+
+    function cargaTabla() {
+        $.ajax({
+            url: "/Home/ObtenerSalidas",
+            method: "GET",
+            success: function (response) {
+                var tabla = "";
+                $.each(response, function (key, item) {
+                    tabla += "<tr>"
+                    tabla += "<td>" + item.id_salida + "</td>"
+                    tabla += "<td>" + item.fecha_salida + "</td>"
+                    tabla += "<td>" + item.nom_planta + "</td>"
+                    tabla += "<td>" + item.cod_camion + "</td>"
+                    tabla += "<td>" + item.nom_chofer + "</td>"
+                    tabla += "<td>" + item.nom_estado_salida + "</td>"
+                    tabla += "<td>" + item.nom_persona + "</td>"
+                    if (item.id_estado_salida == 1) {
+                        tabla += "<td><button type='button' onclick='retornar(" + item.id_salida + ")'>Retornar</button></td>"
+                        tabla += "<td><button type='button' onclick='rechazar(" + item.id_salida + ")'>Rechazar</button></td>"
+                    } else {
+                        tabla += "<td></td>"
+                        tabla += "<td></td>"
+                    }
+                    tabla += "</tr>"
+                });
+                $("#tbDatosSalida").html(tabla)
+            }
+        });
+    }
+
+    function ingresar() {
+        var fechaSalida = $("#txtFechaSalida").val();
+        var idPlanta = $("#cmbPlanta").val();
+        var codCamion = $("#cmbCamion").val();
+        var idChofer = $("#cmbChofer").val();
+        var codUsuario = $("#txtUsuario").val();
+
+        if (fechaSalida == "") {
+            alert("Fecha no puede estar vacia.")
+        }
+        else {
+            $.ajax({
+                url: "/Home/IngresarSalida",
+                method: "POST",
+                data: { idPlanta: idPlanta, codCamion: codCamion, idChofer: idChofer, fechaSalida: fechaSalida, codUsuario: codUsuario },
+                success: function (response) {
+                    if (response != "OK") {
+                        alert(response)
+                    } else {
+                        alert("Guardado correctamente");
+                        limpiarCampos();
+                        cargaTabla();
+                    }
+                }
+            });
+        }
+
+    }
+
+    function retornar(idSalida) {
+        if (confirm("¿Desea retornar el camión seleccionado?")) {
+            $.ajax({
+                url: "/Home/RetornarSalida",
+                method: "POST",
+                data: { idSalida: idSalida },
+                success: function (response) {
+                    if (response != "OK") {
+                        alert(response);
+                    } else {
+                        cargaTabla();
+                    }
+                }
+            });
+        }
+    }
+
+    function rechazar(idSalida) {
+        if (confirm("¿Desea rechazar la salida seleccionada?")) {
+            $.ajax({
+                url: "/Home/RechazarSalida",
+                method: "POST",
+                data: { idSalida: idSalida },
+                success: function (response) {
+                    if (response != "OK") {
+                        alert(response);
+                    } else {
+                        cargaTabla();
+                    }
+                }
+            });
+        }
+    }
+
+    function limpiarCampos() {
+        $("#txtFechaSalida").val("");
+    }
+</script>

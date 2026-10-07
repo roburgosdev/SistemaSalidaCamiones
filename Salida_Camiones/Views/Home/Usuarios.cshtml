@@ -1,0 +1,165 @@
+@{
+    ViewData["Title"] = "Usuario";
+}
+
+<table>
+    <tr>
+        <td>Ingrese el usuario</td>
+        <td><input type="text" id="txtUsuario" /></td>
+    </tr>
+    <tr>
+        <td>Ingrese el nombre del usuario</td>
+        <td><input type="text" id="txtNomPersona" /></td>
+    </tr>
+    <tr>
+        <td>Estado</td>
+        <td>
+            <select id="cmbEstado"></select>
+        </td>
+    </tr>
+    <tr>
+        <td>Contraseña</td>
+        <td><input type="password" id="txtPassword1" /></td>
+    </tr>
+    <tr>
+        <td>Repetir contraseña</td>
+        <td><input type="password" id="txtPassword2" /></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button type="button" onclick="ingresar()" id="btnGuardar">Guardar</button>
+            <button type="button" id="btnActualizar" style="display:none" onclick="actualizarUsuario()">Actualizar
+                Usuario</button>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <table border="1">
+        <thead>
+            <tr style="background-color:red;color:white;">
+                <th>USUARIO</th>
+                <th>NOMBRE DE PERSONA</th>
+                <th>ESTADO</th>
+                <th>EDITAR</th>
+            </tr>
+        </thead>
+        <tbody id="tbDatosUsuario"></tbody>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            cargaEstados();
+            cargaTabla();
+        })
+
+        function cargaEstados() {
+            $.ajax({
+                method: "GET",
+                url: "/Home/ObtenerEstados",
+                success: function (response) {
+                    $("#cmbEstado").empty();
+                    $.each(response, function (i, item) {
+                        $("#cmbEstado").append(
+                            "<option value='" + item.id_Estado + "'>" + item.nom_Estado + "</option>"
+                        );
+                    });
+                }
+            });
+        }
+
+        function cargaTabla() {
+            $.ajax({
+                url: "/Home/ObtenerUsuarios",
+                method: "GET",
+                success: function (response) {
+                    var tabla = "";
+                    $.each(response, function (key, item) {
+                        tabla += "<tr>"
+                        tabla += "<td>" + item.cod_usuario + "</td>"
+                        tabla += "<td>" + item.nom_persona + "</td>"
+                        tabla += "<td>" + item.nom_estado + "</td>"
+                        tabla += "<td><button type='button' onclick='editarUsuario(\"" + item.cod_usuario + "\",\"" + item.nom_persona + "\"," + item.id_estado + ")'>Editar</button></td>"
+                        tabla += "</tr>"
+                    });
+                    $("#tbDatosUsuario").html(tabla)
+                }
+            });
+        }
+
+        function ingresar() {
+            var codUsuario = $("#txtUsuario").val();
+            var idEstado = $("#cmbEstado").val();
+            var password1 = $("#txtPassword1").val();
+            var password2 = $("#txtPassword2").val();
+            var nomPersona = $("#txtNomPersona").val();
+
+            if (codUsuario == "") {
+                alert("Usuario no puede estar vacio.")
+            }
+            else if (password1 == "") {
+                alert("Contraseña no puede estar vacio.")
+            } else if (password2 == "") {
+                alert("Debe repetir la contraseña")
+            } else if (password1 != password2) {
+                alert("Las contraseñas deben coincidir.")
+            } else if (nomPersona == "") {
+                alert("Debe ingresar el nombre de la persona.")
+            }
+            else {
+                $.ajax({
+                    url: "/Home/IngresarUsuario",
+                    method: "POST",
+                    data: { codUsuario: codUsuario, nomPersona: nomPersona, password: password1, idEstado: idEstado },
+                    success: function (response) {
+                        if (response != "OK") {
+                            alert(response);
+                        } else {
+                            alert("Guardado correctamente");
+                            limpiarCampos();
+                            cargaTabla();
+                        }
+                    }
+                });
+            }
+
+        }
+
+        function editarUsuario(codUsuario, nomPersona, idEstado) {
+            $("#txtUsuario").val(codUsuario);
+            $("#txtNomPersona").val(nomPersona);
+            $("#cmbEstado").val(idEstado);
+            $("#btnGuardar").hide();
+            $("#btnActualizar").show();
+        }
+
+        function actualizarUsuario() {
+            var codUsuario = $("#txtUsuario").val();
+            var idEstado = $("#cmbEstado").val();
+            var nomPersona = $("#txtNomPersona").val();
+
+            $.ajax({
+                url: "/Home/EditarUsuario",
+                method: "POST",
+                data: { codUsuario: codUsuario, nomPersona: nomPersona, idEstado: idEstado },
+                success: function (response) {
+                    if (response != "OK") {
+                        alert(response);
+                    }
+                    else {
+                        alert("Editado correctamente");
+                        limpiarCampos();
+                        cargaTabla();
+                    }
+                }
+            });
+        }
+
+        function limpiarCampos() {
+            $("#txtUsuario").val("");
+            $("#txtNomPersona").val("");
+            $("#txtPassword1").val("");
+            $("#txtPassword2").val("");
+            $("#btnActualizar").hide();
+            $("#btnGuardar").show();
+        }
+    </script>

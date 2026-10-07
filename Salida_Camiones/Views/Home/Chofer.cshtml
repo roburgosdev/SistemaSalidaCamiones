@@ -1,0 +1,142 @@
+@{
+    ViewData["Title"] = "Chofer";
+}
+
+<h2>Ingreso nuevo Chofer</h2>
+<table>
+    <tr>
+        <td><input type="hidden" id="txtIdChofer" /></td>
+    </tr>
+    <tr>
+        <td>Nombre Chofer:</td>
+        <td><input type="text" id="txtNombreChofer" /></td>
+    </tr>
+    <tr>
+        <td>Estado</td>
+        <td>
+            <select id="cmbEstado"></select>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button type="button" onclick="ingresar()" id="btnGuardar">Guardar Chofer</button>
+            <button type="button" id="btnActualizar" style="display:none" onclick="actualizarChofer()">Actualizar
+                Chofer</button>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <table border="1">
+        <thead>
+            <tr style="background-color:red;color:white;">
+                <th>ID CHOFER</th>
+                <th>NOMBRE CHOFER</th>
+                <th>ESTADO</th>
+                <th>EDITAR</th>
+            </tr>
+        </thead>
+        <tbody id="tbDatosChofer"></tbody>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            cargaEstados();
+            cargaTabla();
+        });
+        function cargaEstados() {
+            $.ajax({
+                method: "GET",
+                url: "/Home/ObtenerEstados",
+                success: function (response) {
+                    $("#cmbEstado").empty();
+                    $.each(response, function (i, item) {
+                        $("#cmbEstado").append(
+                            "<option value='" + item.id_Estado + "'>" + item.nom_Estado + "</option>"
+                        );
+                    });
+                }
+            });
+        }
+
+        function cargaTabla() {
+            $.ajax({
+                url: "/Home/ObtenerChoferes",
+                method: "GET",
+                success: function (response) {
+                    var tabla = "";
+                    $.each(response, function (key, item) {
+                        tabla += "<tr>"
+                        tabla += "<td>" + item.id_chofer + "</td>"
+                        tabla += "<td>" + item.nom_chofer + "</td>"
+                        tabla += "<td>" + item.nom_estado + "</td>"
+                        tabla += "<td><button type='button' onclick='editarChofer(" + item.id_chofer + ",\"" + item.nom_chofer + "\"," + item.id_estado + ")'>Editar</button></td>"
+                        tabla += "</tr>"
+                    });
+                    $("#tbDatosChofer").html(tabla)
+                }
+            });
+        }
+
+        function ingresar() {
+            var nomChofer = $("#txtNombreChofer").val();
+            var idEstado = $("#cmbEstado").val();
+
+            if (nomChofer == "") {
+                alert("Nombre No puede estar vacio.")
+            }
+            else {
+                $.ajax({
+                    url: "/Home/IngresarChofer",
+                    method: "POST",
+                    data: { nomChofer: nomChofer, idEstado: idEstado },
+                    success: function (response) {
+                        if (response != "OK") {
+                            alert(response)
+                        } else {
+                            alert("Guardado correctamente");
+                            limpiarCampos();
+                            cargaTabla();
+                        }
+                    }
+                });
+            }
+
+        }
+
+        function editarChofer(idChofer, nomChofer, idEstado) {
+            $("#txtIdChofer").val(idChofer);
+            $("#txtNombreChofer").val(nomChofer);
+            $("#cmbEstado").val(idEstado);
+            $("#btnGuardar").hide();
+            $("#btnActualizar").show();
+        }
+
+        function actualizarChofer() {
+            var idChofer = $("#txtIdChofer").val();
+            var idEstado = $("#cmbEstado").val();
+            var nomChofer = $("#txtNombreChofer").val();
+
+            $.ajax({
+                url: "/Home/EditarChofer",
+                method: "POST",
+                data: { idChofer: idChofer, nomChofer: nomChofer, idEstado: idEstado },
+                success: function (response) {
+                    if (response != "OK") {
+                        alert(response)
+                    }
+                    else {
+                        alert("Editado Correctamente");
+                        limpiarCampos();
+                        cargaTabla();
+                    }
+                }
+            });
+        }
+
+        function limpiarCampos() {
+            $("#txtIdChofer").val("");
+            $("#txtNombreChofer").val("");
+            $("#btnActualizar").hide();
+            $("#btnGuardar").show();
+        }    
+    </script>

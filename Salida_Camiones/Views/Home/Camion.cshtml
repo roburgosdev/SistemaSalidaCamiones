@@ -1,0 +1,145 @@
+@{
+    ViewData["Title"] = "Camion";
+}
+
+<h2>Ingreso nuevo camion</h2>
+
+<table>
+    <tr>
+        <td>Ingrese codigo camion: </td>
+        <td><input type="text" id="txtCodCamion" maxlength="10" /></td>
+    </tr>
+    <tr>
+        <td>Planta</td>
+        <td>
+            <select id="cmbPlanta"></select>
+        </td>
+    </tr>
+    <tr>
+        <td>Estado</td>
+        <td>
+            <select id="cmbEstado"></select>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"><button type="button" onclick="ingresar()" id="btnGuardar">Guardar Camion</button></td>
+    </tr>
+</table>
+<br />
+<table border="1">
+    <thead>
+        <tr style="background-color:red;color:white;">
+            <td>COD CAMION</td>
+            <td>PLANTA</td>
+            <td>ESTADO</td>
+            <td>ACCION</td>
+        </tr>
+    </thead>
+    <tbody id="tbDatosCamion"></tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        cargaEstados();
+        cargaTabla();
+        cargaPlantas();
+    })
+
+    function cargaEstados() {
+        $.ajax({
+            method: "GET",
+            url: "/Home/ObtenerEstados",
+            success: function (response) {
+                $("#cmbEstado").empty();
+                $.each(response, function (i, item) {
+                    $("#cmbEstado").append(
+                        "<option value='" + item.id_Estado + "'>" + item.nom_Estado + "</option>"
+                    );
+                });
+            }
+        });
+    }
+
+    function cargaTabla() {
+        $.ajax({
+            url: "/Home/ObtenerCamiones",
+            method: "GET",
+            success: function (response) {
+                var tabla = "";
+                $.each(response, function (key, item) {
+                    var textoBoton = (item.id_estado == 1) ? "Deshabilitar" : "Habilitar";
+                    tabla += "<tr>"
+                    tabla += "<td>" + item.cod_camion + "</td>"
+                    tabla += "<td>" + item.nom_planta + "</td>"
+                    tabla += "<td>" + item.nom_estado + "</td>"
+                    tabla += "<td><button type='button' onclick='habilitarDeshabilitar(\"" + item.cod_camion + "\"," + item.id_estado + ")'>" + textoBoton + "</button></td>"
+                    tabla += "</tr>"
+                });
+                $("#tbDatosCamion").html(tabla)
+            }
+        });
+    }
+
+    function ingresar() {
+        var codCamion = $("#txtCodCamion").val();
+        var idEstado = $("#cmbEstado").val();
+        var idPlanta = $("#cmbPlanta").val();
+
+        if (codCamion == "") {
+            alert("Codigo camion no puede estar vacio.")
+        } else {
+            $.ajax({
+                url: "/Home/IngresarCamion",
+                method: "POST",
+                data: { codCamion: codCamion, idEstado: idEstado, idPlanta: idPlanta },
+                success: function (response) {
+                    if (response != "OK") {
+                        alert(response)
+                    } else {
+                        alert("Guardado correctamente");
+                        limpiarCampos();
+                        cargaTabla();
+                    }
+                }
+            });
+        }
+    }
+
+    function cargaPlantas() {
+        $.ajax({
+            url: "/Home/ObtenerPlantas",
+            method: "GET",
+            success: function (response) {
+                $("#cmbPlanta").empty();
+                $.each(response, function (i, item) {
+                    $("#cmbPlanta").append(
+                        "<option value='" + item.id_Planta + "'>" + item.nom_Planta + "</option>"
+                    );
+                });
+
+            }
+        });
+    }
+
+    function habilitarDeshabilitar(codCamion, idEstado) {
+        var mensaje = (idEstado == 1) ? "¿Desea deshabilitar este camión?" : "¿Desea habilitar este camión?";
+        if (confirm(mensaje)) {
+            $.ajax({
+                url: "/Home/HabilitarDeshabilitar",
+                method: "POST",
+                data: { codCamion: codCamion, idEstado: idEstado },
+                success: function (response) {
+                    if (response != "OK") {
+                        alert(response);
+                    } else {
+                        cargaTabla();
+                    }
+                }
+            });
+        }
+    }
+
+    function limpiarCampos() {
+        $("#txtCodCamion").val("");
+    }
+</script>

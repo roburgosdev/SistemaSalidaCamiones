@@ -1,0 +1,48 @@
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<table>
+    <tr>
+        <td>Ingrese Usuario:</td>
+        <td><input type="text" id="txtUsuario" /></td>
+    </tr>
+    <tr>
+        <td>Ingrese contraseña:</td>
+        <td><input type="password" id="txtPassword" /></td>
+    </tr>
+    <tr>
+        <td colspan="2"><button type="button" onclick="ingresar()">Ingresar</button></td>
+    </tr>
+</table>
+
+<script>
+    function ingresar() {
+        var usuario = $("#txtUsuario").val();
+        var password = $("#txtPassword").val();
+
+        if (usuario == "") {
+            alert("El campo usuario no puede estar vacio.");
+            return;
+        } else if (password == "") {
+            alert("El campo contraseña no puede estar vacio.");
+            return;
+        }
+
+        $.ajax({
+            method: "GET",
+            url: "/Account/ValidarLogin",
+            data: { usuario: usuario, password: password },
+            success: function (response) {
+                if (response != "OK") {
+                    alert(response)
+                }
+                else {
+                    window.location.href = "/Home/Index"
+                }
+            }
+        });
+    }
+</script>
+
